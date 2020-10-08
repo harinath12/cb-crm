@@ -20,14 +20,9 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
-import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UsersComponent } from './users/users.component';
-import { UserRolesComponent } from './user-roles/user-roles.component';
-import { LeadsComponent } from './leads/leads.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DashboardComponent, UsersComponent, UserRolesComponent, LeadsComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
