@@ -10,21 +10,21 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Leads',
     icon: 'home-outline',
-    link: '/pages/leads'
+    link: '/pages/leads',
   },
   {
     title: 'Reports',
     icon: 'home-outline',
-    link: '/pages/reports'
+    link: '/pages/reports',
   },
   {
     title: 'Users',
-    icon: 'home-outline',
-    link: '/pages/users'
+    icon: 'people',
+    link: '/pages/users',
   },
   {
     title: 'User Role',
     icon: 'home-outline',
-    link: '/pages/user-roles'
+    link: '/pages/user-role',
   }
 ];

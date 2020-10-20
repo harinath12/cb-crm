@@ -1,0 +1,436 @@
+<nb-card>
+  <nb-card-header>Eligibility</nb-card-header>
+<nb-card-body>
+  <div class="row">
+    <div class="col-sm-6 pad10 ">
+      <label>Name(As per PAN)</label><input type="text"  nbInput fullWidth placeholder="Full Name">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Gender</label>
+      <nb-radio-group >
+        <nb-radio
+          [value]="'male'">
+         Male
+        </nb-radio>
+        <nb-radio
+          [value]="'female'">
+          Female
+        </nb-radio>
+      </nb-radio-group>
+    </div>
+    <div class="col-sm-6 pad10"><label>Mobile Number</label>  <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+    </div>
+    <div class="col-sm-6 pad10"> <label>Email</label> <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Date of Birth</label>
+        <input nbInput fullwidth class="dpwidth"
+        placeholder="Form Picker"
+        [nbDatepicker]="formpicker">
+      <nb-datepicker #formpicker></nb-datepicker>
+  </div>
+    <div class="col-sm-6 pad10">
+      <label>Current Location</label>
+      <nb-select selected="1">
+      <nb-option value="1">Option 1</nb-option>
+      <nb-option value="2">Option 2</nb-option>
+    </nb-select></div>
+    <div class="col-sm-6 pad10">
+      <label>Current Location Pincode</label>
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Pincode"></div>
+    <div class="col-sm-6 pad10">
+      <label>Occupation</label>
+      <nb-select selected="1">
+      <nb-option value="1">Option 1</nb-option>
+      <nb-option value="2">Option 2</nb-option>
+    </nb-select></div>
+    <div class="col-sm-6 pad10">
+      <label>Company Name</label> 
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Monthly Income</label> 
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>I receive salary by</label>
+      <nb-select selected="1">
+      <nb-option value="1">Option 1</nb-option>
+      <nb-option value="2">Option 2</nb-option>
+    </nb-select></div>
+
+    <div class="col-sm-6 pad10">
+      <label>Bank Name</label>
+      <nb-select selected="1">
+      <nb-option value="1">Option 1</nb-option>
+      <nb-option value="2">Option 2</nb-option>
+    </nb-select></div>
+    <div class="col-sm-6 pad10">
+      <label>Latest Year Income after Tax</label> 
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Current Account Bank Name</label> 
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Are you Paying Monthly EMI</label>
+      <nb-radio-group >
+        <nb-radio
+          [value]="'Yes'">
+         Yes
+        </nb-radio>
+        <nb-radio
+          [value]="'No'">
+          No
+        </nb-radio>
+      </nb-radio-group>
+    </div>
+    <div class="col-sm-6 pad10" >
+      <label>Total EMIs  you currently pay per month </label>
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder=" ">
+
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Do you have existing Credit Card</label>
+      <nb-radio-group >
+        <nb-radio
+          [value]="'Yes'">
+         Yes
+        </nb-radio>
+        <nb-radio
+          [value]="'No'">
+          No
+        </nb-radio>
+      </nb-radio-group>
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Bank Name</label> 
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Bank Name">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Highest Credit Limit</label> 
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Credit Limit">
+    </div>
+    
+    <div class="col-sm-6 pad10">
+      <label>Prefered Language</label>
+      <nb-select selected="1">
+      <nb-option value="1">Option 1</nb-option>
+      <nb-option value="2">Option 2</nb-option>
+    </nb-select></div>
+    <div class="col-sm-6 pad10">
+      
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+    </div>
+  </div>
+    <button  ng-click="submitForm();" type="submit" nbButton [status]="statuses[0]" >
+       Next
+    </button>
+
+</nb-card-body>
+</nb-card>
+
+
+
+<nb-card>
+  <nb-card-header>Verification</nb-card-header>
+<nb-card-body>
+  <div class="row">
+    <div class="col-sm-6 pad10">
+      <label>Current Resident Type</label>
+      <nb-select selected="1">
+        <nb-option value="1">Owned</nb-option>
+        <nb-option value="2">Rented</nb-option>
+        <nb-option value="2">Paying Guest</nb-option>
+        <nb-option value="2">Hostel</nb-option>
+      </nb-select>
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>What proof you have for current address</label>
+      <div class="demo-items">
+          <nb-checkbox>Aadhar Card</nb-checkbox>
+          <nb-checkbox [value]="true">VoterID</nb-checkbox>
+          <nb-checkbox [value]="true">Passport</nb-checkbox>
+          <nb-checkbox [value]="true">Driving License</nb-checkbox>
+          <nb-checkbox [value]="true">Bank Statement</nb-checkbox>
+          <nb-checkbox [value]="true">Gas Bill</nb-checkbox>
+          <nb-checkbox [value]="true">Electricity Bill</nb-checkbox>
+          <nb-checkbox [value]="true">Post-Paid Mobile Bill</nb-checkbox>
+          <nb-checkbox [value]="true">Rental Agreement</nb-checkbox>
+        </div>
+    </div>
+    <div class="col-sm-6 pad10"><label>Do you have a PAN Card Copy</label> 
+      <nb-radio-group >
+        <nb-radio
+          [value]="'Yes'">
+         Yes
+        </nb-radio>
+        <nb-radio
+          [value]="'No'">
+          No
+        </nb-radio>
+      </nb-radio-group>
+    </div>
+    <div class="col-sm-6 pad10"> 
+      <label>Income proof</label>
+      <nb-select selected="1">
+        <nb-option value="1">Option 1</nb-option>
+        <nb-option value="2">Option 2</nb-option>
+      </nb-select>
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Office City</label>
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+
+      </div>
+    <div class="col-sm-6 pad10">
+      <label>Office Pin Code</label>
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+
+      </div>
+    <div class="col-sm-6 pad10">
+      <label>Official Email</label>
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+
+      </div>
+    <div class="col-sm-6 pad10">
+      <label>Address Proof for Office</label> 
+      <nb-select selected="1">
+        <nb-option value="1">Option 1</nb-option>
+        <nb-option value="2">Option 2</nb-option>
+      </nb-select>
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Business Stability</label> 
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Overall Work Experience</label> 
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Do you have latest credit card statement </label>
+      <nb-radio-group >
+        <nb-radio
+          [value]="'Yes'">
+         Yes
+        </nb-radio>
+        <nb-radio
+          [value]="'No'">
+          No
+        </nb-radio>
+      </nb-radio-group>
+    </div>
+  </div>
+    <button  ng-click="submitForm();" type="submit" nbButton [status]="statuses[0]" >
+       Next
+    </button>
+
+</nb-card-body>
+</nb-card>
+
+<nb-card>
+  <nb-card-header>Property Details</nb-card-header>
+<nb-card-body>
+  <div class="row">
+    <div class="col-sm-6 pad10">
+      <label>Mortage Type</label>
+      <nb-select selected="1">
+        <nb-option value="1">Plot</nb-option>
+        <nb-option value="2">House</nb-option>
+        </nb-select>
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Purchase Type</label>
+      <nb-select selected="1">
+        <nb-option value="1">Plot</nb-option>
+        <nb-option value="2">Flat</nb-option>
+        <nb-option value="2">Plot + Construction</nb-option>
+        <nb-option value="2">Built on Land I own</nb-option>
+        <nb-option value="2">Individual House</nb-option>
+        </nb-select>
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Approval Status</label>
+      <nb-select selected="1">
+        <nb-option value="1">Plot</nb-option>
+        <nb-option value="2">House</nb-option>
+        </nb-select>
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>House Type</label>
+      <nb-select selected="1">
+        <nb-option value="1">New</nb-option>
+        <nb-option value="2">Resale</nb-option>
+        </nb-select>
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Do you have building plan approval</label>
+      <nb-radio-group >
+        <nb-radio
+          [value]="'Yes'">
+         Yes
+        </nb-radio>
+        <nb-radio
+          [value]="'No'">
+          No
+        </nb-radio>
+      </nb-radio-group>
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Land Size</label>
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Construction Size</label>
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Construction Cost Estimation</label>
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Built up area </label>
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Property Location</label>
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
+
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Current Market Value</label>
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Purchase Rate</label>
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Have you Made advance payment</label>
+      <nb-radio-group >
+        <nb-radio
+          [value]="'Yes'">
+         Yes
+        </nb-radio>
+        <nb-radio
+          [value]="'No'">
+          No
+        </nb-radio>
+      </nb-radio-group>
+    </div>
+    
+      </div>
+    <button  ng-click="submitForm();" type="submit" nbButton [status]="statuses[0]" >
+       Next
+    </button>
+
+</nb-card-body>
+</nb-card>
+
+
+
+<nb-card>
+  <nb-card-header>KYC Completed</nb-card-header>
+<nb-card-body>
+  <div class="row">
+    <div class="col-sm-6 pad10">
+      <label>Aadhar Card</label><input type="file"  nbInput fullWidth placeholder="Full Name">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>PAN Card</label>
+      <input type="file"  nbInput fullWidth placeholder="Full Name">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Address Proof</label> 
+      <input type="file"  nbInput fullWidth placeholder="Full Name"></div>
+    <div class="col-sm-6 pad10">
+       <label>Income Proof</label> 
+       <input type="file"  nbInput fullWidth placeholder="Full Name">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>ID Card</label>
+      <input type="file"  nbInput fullWidth placeholder="Full Name">
+      </div>
+    <div class="col-sm-6 pad10">
+      <label>Bank Statement</label>
+      <input type="file"  nbInput fullWidth placeholder="Full Name">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Credit Card Statement</label>
+      <input type="file"  nbInput fullWidth placeholder="Full Name">
+    </div>
+  </div>
+    <button  ng-click="submitForm();" type="submit" nbButton [status]="statuses[0]" >
+       Next
+    </button>
+
+</nb-card-body>
+</nb-card>
+
+<nb-card>
+  <nb-card-header>Offer Updated</nb-card-header>
+<nb-card-body>
+  <div class="row">
+    <div class="col-sm-6 pad10">
+      <label>Bank Name</label>
+      <nb-select selected="1">
+        <nb-option value="1">Option 1</nb-option>
+        <nb-option value="2">Option 2</nb-option>
+      </nb-select>
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Card Name</label>
+      <nb-select selected="1">
+        <nb-option value="1">Option 1</nb-option>
+        <nb-option value="2">Option 2</nb-option>
+      </nb-select>
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>Loan Amount Applied for</label>
+      <input type="text"  nbInput fullWidth placeholder="Full Name">
+    </div>
+    
+   
+    <div class="col-sm-6 pad10">
+      <label>Application Submitted to Bank</label>
+      <nb-radio-group >
+        <nb-radio
+          [value]="'Yes'">
+         Yes
+        </nb-radio>
+        <nb-radio
+          [value]="'No'">
+          No
+        </nb-radio>
+      </nb-radio-group></div>
+      
+    
+    <div class="col-sm-6 pad10">
+      <label>Credit Score</label>
+      
+      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+    </div>
+    <div class="col-sm-6 pad10">
+      <label>AIP Pass</label>
+      <nb-radio-group >
+        <nb-radio
+          [value]="'Yes'">
+         Yes
+        </nb-radio>
+        <nb-radio
+          [value]="'No'">
+          No
+        </nb-radio>
+      </nb-radio-group>
+    </div>
+  </div>
+    <button  ng-click="submitForm();" type="submit" nbButton [status]="statuses[0]" >
+       Next
+    </button>
+
+</nb-card-body>
+</nb-card>
+
+

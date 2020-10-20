@@ -5,6 +5,14 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
+import {LeadsComponent} from "./leads/leads.component";
+import {ProfileComponent} from "./profile/profile.component";
+import {ReportsComponent} from "./reports/reports.component";
+import {SettingsComponent} from "./settings/settings.component";
+import {UserRoleComponent} from "./user-role/user-role.component";
+import {UsersComponent} from "./users/users.component";
+
+
 
 const routes: Routes = [{
   path: '',
@@ -13,10 +21,6 @@ const routes: Routes = [{
     {
       path: 'dashboard',
       component: ECommerceComponent,
-    },
-    {
-      path: 'iot-dashboard',
-      component: DashboardComponent,
     },
     {
       path: 'layout',
@@ -72,6 +76,31 @@ const routes: Routes = [{
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',
+    },
+    {
+      path: 'leads',
+      loadChildren: () => import('./leads/leads.module')
+        .then(m => m.LeadsModule),
+    },
+    {
+      path: 'reports',
+      component: ReportsComponent,
+    },
+    {
+      path: 'users',
+      component: UsersComponent,
+    },
+    {
+      path: 'user-role',
+      component: UserRoleComponent,
+    },
+    {
+      path: 'settings',
+      component: SettingsComponent,
+    },
+    {
+      path: 'profile',
+      component: ProfileComponent,
     },
     {
       path: '**',
