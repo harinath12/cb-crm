@@ -1,0 +1,51 @@
+<nb-card>
+    <nb-card-header>Add User</nb-card-header>
+    <nb-card-body>
+        <div class="row">
+            <div class="col-sm-6 pad10 ">
+                <label>Name</label><input type="text"  nbInput fullWidth placeholder="Full Name">
+              </div>
+              <div class="col-sm-6 pad10">
+                <label>Gender</label>
+                <nb-radio-group >
+                  <nb-radio
+                    [value]="'male'">
+                   Male
+                  </nb-radio>
+                  <nb-radio
+                    [value]="'female'">
+                    Female
+                  </nb-radio>
+                </nb-radio-group>
+              </div>
+              <div class="col-sm-6 pad10"><label>Mobile Number</label>  <input type="text" nbInput fullWidth shape="rectangle" placeholder="Phone Number">
+              </div>
+              <div class="col-sm-6 pad10"> <label>Email</label> <input type="text" nbInput fullWidth shape="rectangle" placeholder="Email">
+              </div>
+              <div class="col-sm-6 pad10">
+                <label>Date of Birth</label>
+                  <input nbInput fullwidth class="dpwidth"
+                  placeholder="Form Picker"
+                  [nbDatepicker]="formpicker">
+                <nb-datepicker #formpicker></nb-datepicker>
+            </div>
+            <div class="col-sm-6 pad10"> 
+                <label>Passowrd</label>
+                 <input type="text" nbInput fullWidth shape="rectangle" placeholder="Passowrd">
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>
+
+
+<nb-card>
+    <nb-card-header>
+    User Roles
+    </nb-card-header>
+  
+    <nb-card-body>
+      <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+      </ng2-smart-table>
+    </nb-card-body>
+  </nb-card>
+

@@ -14,6 +14,11 @@ import { ThemeModule } from '../../@theme/theme.module';
 import { AddLeadComponent } from './add-lead/add-lead.component';
 import { LeadsComponent } from './leads.component';
 import { LeadsRoutingModule } from './leads-routing.module';
+import { UserComponent } from './user/user.component';
+import { UserRolesComponent } from './user-roles/user-roles.component';
+import { SettingsComponent } from './settings/settings.component';
+import { ReportsComponent } from './reports/reports.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -38,7 +43,11 @@ import { LeadsRoutingModule } from './leads-routing.module';
   declarations: [
   LeadsComponent,
   AddLeadComponent,
-  
+  UserComponent,
+  UserRolesComponent,
+  SettingsComponent,
+  ReportsComponent,
+  ProfileComponent,
 ],
 })
 export class LeadsModule {

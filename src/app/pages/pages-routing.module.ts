@@ -83,26 +83,6 @@ const routes: Routes = [{
         .then(m => m.LeadsModule),
     },
     {
-      path: 'reports',
-      component: ReportsComponent,
-    },
-    {
-      path: 'users',
-      component: UsersComponent,
-    },
-    {
-      path: 'user-role',
-      component: UserRoleComponent,
-    },
-    {
-      path: 'settings',
-      component: SettingsComponent,
-    },
-    {
-      path: 'profile',
-      component: ProfileComponent,
-    },
-    {
       path: '**',
       component: NotFoundComponent,
     },
