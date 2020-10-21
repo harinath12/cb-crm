@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 
-/*import { SmartTableData } from '../../../@core/data/smart-table';*/
+
 
 @Component({
   selector: 'ngx-leads',
@@ -9,7 +9,7 @@ import { LocalDataSource } from 'ng2-smart-table';
   styleUrls: ['./leads.component.scss']
 })
 export class LeadsComponent implements OnInit {
-	 settings = {
+settings = {
     actions: {
       position: 'right',
     },
