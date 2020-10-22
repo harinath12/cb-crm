@@ -15,16 +15,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Reports',
     icon: 'home-outline',
-    link: '/pages/reports',
+    link: '/pages/leads/reports',
   },
   {
     title: 'Users',
     icon: 'people',
-    link: '/pages/users',
+    link: '/pages/leads/user',
   },
   {
     title: 'User Role',
     icon: 'home-outline',
-    link: '/pages/user-role',
+    link: '/pages/leads/user-role',
   }
 ];

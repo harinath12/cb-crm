@@ -1,40 +1,47 @@
 <nb-card>
     <nb-card-header>Add User</nb-card-header>
     <nb-card-body>
+      <form name="userForm" #userForm="ngForm">
         <div class="row">
-            <div class="col-sm-6 pad10 ">
-                <label>Name</label><input type="text"  nbInput fullWidth placeholder="Full Name">
-              </div>
-              <div class="col-sm-6 pad10">
-                <label>Gender</label>
-                <nb-radio-group >
-                  <nb-radio
-                    [value]="'male'">
-                   Male
-                  </nb-radio>
-                  <nb-radio
-                    [value]="'female'">
-                    Female
-                  </nb-radio>
-                </nb-radio-group>
-              </div>
-              <div class="col-sm-6 pad10"><label>Mobile Number</label>  <input type="text" nbInput fullWidth shape="rectangle" placeholder="Phone Number">
-              </div>
-              <div class="col-sm-6 pad10"> <label>Email</label> <input type="text" nbInput fullWidth shape="rectangle" placeholder="Email">
-              </div>
-              <div class="col-sm-6 pad10">
-                <label>Date of Birth</label>
-                  <input nbInput fullwidth class="dpwidth"
-                  placeholder="Form Picker"
-                  [nbDatepicker]="formpicker">
-                <nb-datepicker #formpicker></nb-datepicker>
+          <div class="col-sm-6 pad10 ">
+              <label>Name</label><input type="text" required [(ngModel)]="user.name" nbInput fullWidth placeholder="Full Name">
             </div>
-            <div class="col-sm-6 pad10"> 
-                <label>Passowrd</label>
-                 <input type="text" nbInput fullWidth shape="rectangle" placeholder="Passowrd">
+            <div class="col-sm-6 pad10">
+              <label>Gender</label>
+              <nb-radio-group >
+                <nb-radio
+                  [value]="'male'">
+                 Male
+                </nb-radio>
+                <nb-radio
+                  [value]="'female'">
+                  Female
+                </nb-radio>
+              </nb-radio-group>
             </div>
+            <div class="col-sm-6 pad10"><label>Mobile Number</label>  <input required [(ngModel)]="user.phone" type="text" nbInput fullWidth shape="rectangle" placeholder="Phone Number">
+            </div>
+            <div class="col-sm-6 pad10"> <label>Email</label> <input required type="email" [(ngModel)]="user.email" nbInput fullWidth shape="rectangle" placeholder="Email">
+            </div>
+            <div class="col-sm-6 pad10">
+              <label>Date of Birth</label>
+                <input nbInput fullwidth class="dpwidth" [(ngModel)]="user.dob"
+                placeholder="Form Picker"
+                [nbDatepicker]="formpicker">
+              <nb-datepicker #formpicker></nb-datepicker>
+          </div>
+          <div class="col-sm-6 pad10"> 
+              <label>Passowrd</label>
+               <input [(ngModel)]="user.password" type="password" nbInput fullWidth shape="rectangle" placeholder="Passowrd">
+          </div>
         </div>
+      </form>
     </nb-card-body>
+    <nb-card-footer>
+      <button (click)="addUser(userForm.form)" nbButton [status]="'primary'">
+        Add User
+      </button>
+    </nb-card-footer>
 </nb-card>
 
 

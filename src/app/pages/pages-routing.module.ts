@@ -9,8 +9,6 @@ import {LeadsComponent} from "./leads/leads.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {ReportsComponent} from "./reports/reports.component";
 import {SettingsComponent} from "./settings/settings.component";
-import {UserRoleComponent} from "./user-role/user-role.component";
-import {UsersComponent} from "./users/users.component";
 
 
 

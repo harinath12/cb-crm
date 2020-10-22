@@ -50,9 +50,16 @@ export class UserRolesComponent implements OnInit {
       },
     },
   };
+
+  sources = [];
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onDeleteConfirm(e){
+
   }
 
 }

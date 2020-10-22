@@ -8,10 +8,10 @@ import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/t
 })
 export class UserComponent implements OnInit {
 
-  statuses: NbComponentStatus[] = [ 'primary', 'success', 'info', 'warning', 'danger' ];
-  shapes: NbComponentShape[] = [ 'rectangle', 'semi-round', 'round' ];
-  sizes: NbComponentSize[] = [ 'tiny', 'small', 'medium', 'large', 'giant' ];
-
+  user:any = {};
+  userForm: any = {};
+  users = [];
+  sources = [];
   settings = {
     actions: {
       position: 'right',
@@ -55,4 +55,13 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  addUser(frm){
+    if (frm.valid) {
+      this.users.push(this.user);
+    }
+  }
+
+  onDeleteConfirm(e){
+
+  }
 }
