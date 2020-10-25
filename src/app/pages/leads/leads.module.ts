@@ -19,6 +19,7 @@ import { UserRolesComponent } from './user-roles/user-roles.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ReportsComponent } from './reports/reports.component';
 import { ProfileComponent } from './profile/profile.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -39,6 +40,7 @@ import { ProfileComponent } from './profile/profile.component';
     NbRadioModule,
     NbDatepickerModule,
     NbSelectModule,
+    FormsModule,
   ],
   declarations: [
   LeadsComponent,

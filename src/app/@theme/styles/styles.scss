@@ -31,3 +31,7 @@
 
   @include nb-overrides();
 };
+
+.ng-invalid.ng-touched{
+  border-color: red !important;
+}

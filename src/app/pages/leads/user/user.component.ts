@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import { LocalDataSource } from 'ng2-smart-table';
 
 @Component({
   selector: 'ngx-user',
@@ -11,57 +11,74 @@ export class UserComponent implements OnInit {
   user:any = {};
   userForm: any = {};
   users = [];
-  sources = [];
+  source: LocalDataSource = new LocalDataSource();
   settings = {
     actions: {
-      position: 'right',
-    },
-    add: {
-      addButtonContent: '<i class="nb-plus"></i>',
-      createButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    edit: {
-      editButtonContent: '<i class="nb-edit"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
+      custom: [
+        {
+          name: 'editAction',
+          title: '<i class="nb-edit"></i>'
+        },
+        {
+          name: 'deleteAction',
+          title: '<i class="nb-trash"></i>'
+        }
+      ],
+      add: false,
+      edit: false,
+      delete: false,
+      position: 'right'
     },
     columns: {
-      SN: {
+      id: {
         title: 'Si.No',
         type: 'number',
       },
-      Role: {
+      name: {
+        title: 'Name',
+        type: 'string',
+      },
+      email: {
+        title: 'Email',
+        type: 'string',
+      },
+      dob: {
+        title: 'DOB',
+        type: 'string',
+      },
+      role: {
         title: 'Role',
         type: 'string',
-      },
-      Modules: {
-        title: 'Modules',
-        type: 'string',
-      },
-      Permission: {
-        title: 'Permission',
-        type: 'string',
-      },
+      }
     },
   };
+  showForm = false;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.source.load(this.users);
   }
 
   addUser(frm){
+    frm.markAllAsTouched();
     if (frm.valid) {
       this.users.push(this.user);
+      this.source.load(this.users);
+      this.showForm = false;
+      this.user = {};
     }
+  }
+
+  editUser(data){
+    console.log(data);
   }
 
   onDeleteConfirm(e){
 
+  }
+
+  customEvent(e){
+    console.log(e);
   }
 }
