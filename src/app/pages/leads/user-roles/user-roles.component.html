@@ -1,18 +1,20 @@
-<nb-card>
+<nb-card *ngIf="showForm">
     <nb-card-header>Add User Role</nb-card-header>
     <nb-card-body>
+        {{userole | json}}
+        <form name="useroleForm" #userForm="ngForm">
         <div class="row">
             <div class="col-sm-6 pad10">
                 <label>Role name</label>
             </div>
             <div class="col-sm-6 pad10">
-                <input type="text"  nbInput fullWidth placeholder="Role Name">
+                <input type="text" name="rolename" required [(ngModel)]="userole.rolename" nbInput fullWidth placeholder="Role Name">
             </div>
             <div class="col-sm-6 pad10">
                 <label>Modules</label>
             </div>
             <div class="col-sm-6 pad10">
-                <nb-select selected="1">
+                <nb-select selected="1" name="modules" required [(ngModel)]="userole.modules">
                 <nb-option value="1">Option 1</nb-option>
                 <nb-option value="2">Option 2</nb-option>
             </nb-select>
@@ -21,17 +23,23 @@
                 <label>Permissions</label>
             </div>
             <div class="col-sm-6 demo-items pad10">
-                <nb-checkbox [value]="true">Add</nb-checkbox>
-                <nb-checkbox >Edit</nb-checkbox>
+                <nb-checkbox [value]="true" required [(ngModel)]="userole.permission">Add</nb-checkbox>
+                <nb-checkbox [value]="true" required [(ngModel)]="userole.permission">Edit</nb-checkbox>
             </div>
         </div>
+    </form>
     </nb-card-body>
+    <nb-card-footer>
+        <button (click)="addUserrole(useroleForm.form)" nbButton [status]="'primary'">
+          Add Role
+        </button>
+    </nb-card-footer>
 </nb-card>
 
 
-<nb-card>
+<nb-card *ngIf="!showForm">
     <nb-card-header>
-    User Roles
+    User Roles <button (click)="showForm=true;" nbButton [status]="'primary'" class="align-right">Add New Role</button>
     </nb-card-header>
   
     <nb-card-body>

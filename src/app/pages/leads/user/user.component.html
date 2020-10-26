@@ -36,6 +36,14 @@
               <label>Passowrd</label>
                <input name="password" required [(ngModel)]="user.password" type="password" nbInput fullWidth shape="rectangle" placeholder="Passowrd">
           </div>
+          <div class="col-sm-6 pad10"> 
+            <label>User Role</label>
+            <nb-select selected="1" name="role" required [(ngModel)]="user.role">
+              <nb-option >Select Option</nb-option>
+              <nb-option value="1">Option 1</nb-option>
+              <nb-option value="2">Option 2</nb-option>
+            </nb-select>
+        </div>
         </div>
       </form>
     </nb-card-body>
@@ -49,7 +57,7 @@
 
 <nb-card *ngIf="!showForm">
     <nb-card-header>
-    User Roles <button (click)="showForm=true;" nbButton [status]="'primary'">Add New user</button>
+    Users <button (click)="showForm=true;" nbButton [status]="'primary'" class="align-right">Add New user</button>
     </nb-card-header>
   
     <nb-card-body>

@@ -8,7 +8,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 })
 export class UserComponent implements OnInit {
 
-  user:any = {};
+  user: any = {};
   userForm: any = {};
   users = [];
   source: LocalDataSource = new LocalDataSource();
@@ -17,17 +17,17 @@ export class UserComponent implements OnInit {
       custom: [
         {
           name: 'editAction',
-          title: '<i class="nb-edit"></i>'
+          title: '<i class="nb-edit"></i>',
         },
         {
           name: 'deleteAction',
-          title: '<i class="nb-trash"></i>'
-        }
+          title: '<i class="nb-trash"></i>',
+        },
       ],
       add: false,
       edit: false,
       delete: false,
-      position: 'right'
+      position: 'right',
     },
     columns: {
       id: {
@@ -70,15 +70,15 @@ export class UserComponent implements OnInit {
     }
   }
 
-  editUser(data){
+  editUser(data) {
     console.log(data);
   }
 
-  onDeleteConfirm(e){
+  onDeleteConfirm(e) {
 
   }
 
-  customEvent(e){
+  customEvent(e) {
     console.log(e);
   }
 }
