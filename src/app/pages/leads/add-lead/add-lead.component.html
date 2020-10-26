@@ -4,7 +4,7 @@
   </nb-card-header>
 <nb-card-body>
   <div class="col-sm-6 pad10">
-    <label>Current Location</label></div>
+    <label>Select Product</label></div>
     <div class="col-sm-6 pad10">
     <nb-select selected="1">
     <nb-option value="1">Option 1</nb-option>
@@ -139,11 +139,14 @@
       <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
     </div>
   </div>
-    <button  ng-click="submitForm();" type="submit" nbButton [status]="statuses[0]" >
-       Next
-    </button>
+    
 
 </nb-card-body>
+<nb-card-footer>
+  <button  ng-click="submitForm();" type="submit" nbButton [status]="statuses[0]" >
+    Next
+ </button>
+</nb-card-footer>
 </nb-card>
 
 
@@ -238,11 +241,12 @@
       </nb-radio-group>
     </div>
   </div>
-    <button  ng-click="submitForm();" type="submit" nbButton [status]="statuses[0]" >
-       Next
-    </button>
-
 </nb-card-body>
+<nb-card-footer>
+  <button  ng-click="submitForm();" type="submit" nbButton [status]="statuses[0]" >
+    Next
+ </button>
+</nb-card-footer>
 </nb-card>
 
 <nb-card>
@@ -337,11 +341,12 @@
     </div>
     
       </div>
+  </nb-card-body>
+  <nb-card-footer>
     <button  ng-click="submitForm();" type="submit" nbButton [status]="statuses[0]" >
-       Next
-    </button>
-
-</nb-card-body>
+      Next
+  </button>
+  </nb-card-footer>
 </nb-card>
 
 
@@ -377,11 +382,12 @@
       <input type="file"  nbInput fullWidth placeholder="Full Name">
     </div>
   </div>
+  </nb-card-body>
+  <nb-card-footer>
     <button  ng-click="submitForm();" type="submit" nbButton [status]="statuses[0]" >
-       Next
-    </button>
-
-</nb-card-body>
+      Next
+  </button>
+  </nb-card-footer>
 </nb-card>
 
 <nb-card>
@@ -441,11 +447,12 @@
       </nb-radio-group>
     </div>
   </div>
+  </nb-card-body>
+  <nb-card-footer>
     <button  ng-click="submitForm();" type="submit" nbButton [status]="statuses[0]" >
-       Next
-    </button>
-
-</nb-card-body>
+      Next
+  </button>
+  </nb-card-footer>
 </nb-card>
 
 
