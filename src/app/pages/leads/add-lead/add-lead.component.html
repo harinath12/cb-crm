@@ -2,151 +2,162 @@
   <nb-card-header>
     Product
   </nb-card-header>
-<nb-card-body class="row">
-  <div class="col-sm-6 pad10">
-    <label>Select Product</label></div>
+  <nb-card-body class="row">
     <div class="col-sm-6 pad10">
-    <nb-select selected="1">
-    <nb-option value="1">Option 1</nb-option>
-    <nb-option value="2">Option 2</nb-option>
-  </nb-select></div>
-</nb-card-body>
+      <label>Select Product</label></div>
+      <div class="col-sm-6 pad10">
+      <nb-select selected="1">
+      <nb-option value="1">Option 1</nb-option>
+      <nb-option value="2">Option 2</nb-option>
+    </nb-select></div>
+  </nb-card-body>
 </nb-card>
 
 <nb-card>
   <nb-card-header>Eligibility</nb-card-header>
-<nb-card-body>
-  <div class="row">
-    <div class="col-sm-6 pad10 ">
-      <label>Name(As per PAN)</label><input type="text"  nbInput fullWidth placeholder="Full Name">
-    </div>
-    <div class="col-sm-6 pad10">
-      <label>Gender</label>
-      <nb-radio-group >
-        <nb-radio
-          [value]="'male'">
-         Male
-        </nb-radio>
-        <nb-radio
-          [value]="'female'">
-          Female
-        </nb-radio>
-      </nb-radio-group>
-    </div>
-    <div class="col-sm-6 pad10"><label>Mobile Number</label>  <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
-    </div>
-    <div class="col-sm-6 pad10"> <label>Email</label> <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
-    </div>
-    <div class="col-sm-6 pad10">
-      <label>Date of Birth</label>
-        <input nbInput fullwidth class="dpwidth"
-        placeholder="Form Picker"
-        [nbDatepicker]="formpicker">
-      <nb-datepicker #formpicker></nb-datepicker>
-  </div>
-    <div class="col-sm-6 pad10">
-      <label>Current Location</label>
-      <nb-select selected="1">
-      <nb-option value="1">Option 1</nb-option>
-      <nb-option value="2">Option 2</nb-option>
-    </nb-select></div>
-    <div class="col-sm-6 pad10">
-      <label>Current Location Pincode</label>
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Pincode"></div>
-    <div class="col-sm-6 pad10">
-      <label>Occupation</label>
-      <nb-select selected="1">
-      <nb-option value="1">Option 1</nb-option>
-      <nb-option value="2">Option 2</nb-option>
-    </nb-select></div>
-    <div class="col-sm-6 pad10">
-      <label>Company Name</label> 
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
-    </div>
-    <div class="col-sm-6 pad10">
-      <label>Monthly Income</label> 
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
-    </div>
-    <div class="col-sm-6 pad10">
-      <label>I receive salary by</label>
-      <nb-select selected="1">
-      <nb-option value="1">Option 1</nb-option>
-      <nb-option value="2">Option 2</nb-option>
-    </nb-select></div>
+  <nb-card-body>
+    {{lead | json}}
+    <form name="eligibilityForm" #userForm="ngForm">
+    <div class="row">
+      <div class="col-sm-6 pad10 ">
+        <label>Name(As per PAN)</label>
+        <input type="text"  name="fname" required [(ngModel)]="lead.fname" nbInput fullWidth placeholder="Full Name">
+      </div>
+      <div class="col-sm-6 pad10">
+        <label>Gender</label>
+        <nb-radio-group name="gender" required [(ngModel)]="lead.gender">
+          <nb-radio
+            [value]="'male'">
+          Male
+          </nb-radio>
+          <nb-radio
+            [value]="'female'">
+            Female
+          </nb-radio>
+        </nb-radio-group>
+      </div>
+      <div class="col-sm-6 pad10">
+        <label>Mobile Number</label> 
+         <input type="text" name="mobile" required [(ngModel)]="lead.mobile" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+      </div>
+      <div class="col-sm-6 pad10"> <label>Email</label> 
+        <input type="text" name="email" required [(ngModel)]="lead.email" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+      </div>
+      <div class="col-sm-6 pad10">
+        <label>Date of Birth</label>
+          <input name="dob" required [(ngModel)]="lead.dob" nbInput fullwidth class="dpwidth"
+          placeholder="Form Picker"
+          [nbDatepicker]="formpicker">
+        <nb-datepicker #formpicker></nb-datepicker>
+      </div>
+      <div class="col-sm-6 pad10">
+        <label>Current Address</label>
+        <textarea rows="5" name="current_address" required [(ngModel)]="lead.current_address" nbInput fullWidth shape="round"  placeholder="Text Area"></textarea>
+      </div>
+      <div class="col-sm-6 pad10">
+        <label>Current City</label>
+        <nb-select name="current_location" required [(ngModel)]="lead.current_location" selected="1">
+        <nb-option value="1">Option 1</nb-option>
+        <nb-option value="2">Option 2</nb-option>
+      </nb-select></div>
+      <div class="col-sm-6 pad10">
+        <label>Current Location Pincode</label>
+        <input type="text" name="picode"required [(ngModel)]="lead.pincode"  nbInput fullWidth shape="rectangle" placeholder="Pincode"></div>
+      <div class="col-sm-6 pad10">
+        <label>Occupation</label>
+        <nb-select name="occupation" required [(ngModel)]="lead.occupation" selected="1">
+        <nb-option value="1">Option 1</nb-option>
+        <nb-option value="2">Option 2</nb-option>
+      </nb-select></div>
+      <div class="col-sm-6 pad10">
+        <label>Company Name</label> 
+        <input type="text" name="company_name" required [(ngModel)]="lead.company_name" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+      </div>
+      <div class="col-sm-6 pad10">
+        <label>Monthly Income</label> 
+        <input type="text" name="monthly_income" required [(ngModel)]="lead.monthly_income" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+      </div>
+      <div class="col-sm-6 pad10">
+        <label>I receive salary by</label>
+        <nb-select name="receive_salary" required [(ngModel)]="lead.receive_salary" selected="1">
+        <nb-option value="1">Option 1</nb-option>
+        <nb-option value="2">Option 2</nb-option>
+      </nb-select></div>
 
-    <div class="col-sm-6 pad10">
-      <label>Bank Name</label>
-      <nb-select selected="1">
-      <nb-option value="1">Option 1</nb-option>
-      <nb-option value="2">Option 2</nb-option>
-    </nb-select></div>
-    <div class="col-sm-6 pad10">
-      <label>Latest Year Income after Tax</label> 
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
-    </div>
-    <div class="col-sm-6 pad10">
-      <label>Current Account Bank Name</label> 
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
-    </div>
-    <div class="col-sm-6 pad10">
-      <label>Are you Paying Monthly EMI</label>
-      <nb-radio-group >
-        <nb-radio
-          [value]="'Yes'">
-         Yes
-        </nb-radio>
-        <nb-radio
-          [value]="'No'">
-          No
-        </nb-radio>
-      </nb-radio-group>
-    </div>
-    <div class="col-sm-6 pad10" >
-      <label>Total EMIs  you currently pay per month </label>
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder=" ">
+      <div class="col-sm-6 pad10">
+        <label>Bank Name</label>
+        <nb-select name="bank_name" required [(ngModel)]="lead.bank_name" selected="1">
+        <nb-option value="1">Option 1</nb-option>
+        <nb-option value="2">Option 2</nb-option>
+      </nb-select></div>
+      <div class="col-sm-6 pad10">
+        <label>Latest Year Income after Tax</label> 
+        <input type="text" name="yearly_income" required [(ngModel)]="lead.yearly_income"nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+      </div>
+      <div class="col-sm-6 pad10">
+        <label>Current Account Bank Name</label> 
+        <input type="text" name="acc_bank" required [(ngModel)]="lead.acc_bank" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+      </div>
+      <div class="col-sm-6 pad10">
+        <label>Are you Paying Monthly EMI</label>
+        <nb-radio-group name="emi" required [(ngModel)]="lead.emi">
+          <nb-radio
+            [value]="'Yes'">
+          Yes
+          </nb-radio>
+          <nb-radio
+            [value]="'No'">
+            No
+          </nb-radio>
+        </nb-radio-group>
+      </div>
+      <div class="col-sm-6 pad10" >
+        <label>Total EMIs  you currently pay per month </label>
+        <input type="text" name="monthly_emi" required [(ngModel)]="lead.monthly_emi" nbInput fullWidth shape="rectangle" placeholder=" ">
 
-    </div>
-    <div class="col-sm-6 pad10">
-      <label>Do you have existing Credit Card</label>
-      <nb-radio-group >
-        <nb-radio
-          [value]="'Yes'">
-         Yes
-        </nb-radio>
-        <nb-radio
-          [value]="'No'">
-          No
-        </nb-radio>
-      </nb-radio-group>
-    </div>
-    <div class="col-sm-6 pad10">
-      <label>Bank Name</label> 
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Bank Name">
-    </div>
-    <div class="col-sm-6 pad10">
-      <label>Highest Credit Limit</label> 
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Credit Limit">
-    </div>
-    
-    <div class="col-sm-6 pad10">
-      <label>Prefered Language</label>
-      <nb-select selected="1">
-      <nb-option value="1">Option 1</nb-option>
-      <nb-option value="2">Option 2</nb-option>
-    </nb-select></div>
-    <div class="col-sm-6 pad10">
+      </div>
+      <div class="col-sm-6 pad10">
+        <label>Do you have existing Credit Card</label>
+        <nb-radio-group name="cc" required [(ngModel)]="lead.cc">
+          <nb-radio
+            [value]="'Yes'">
+          Yes
+          </nb-radio>
+          <nb-radio
+            [value]="'No'">
+            No
+          </nb-radio>
+        </nb-radio-group>
+      </div>
+      <div class="col-sm-6 pad10">
+        <label>Bank Name</label> 
+        <input type="text" name="cc_bank" required [(ngModel)]="lead.cc_bank" nbInput fullWidth shape="rectangle" placeholder="Bank Name">
+      </div>
+      <div class="col-sm-6 pad10">
+        <label>Highest Credit Limit</label> 
+        <input type="text" name="credit_limit" required [(ngModel)]="lead.credit_limit" nbInput fullWidth shape="rectangle" placeholder="Credit Limit">
+      </div>
       
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+      <div class="col-sm-6 pad10">
+        <label>Prefered Language</label>
+        <nb-select name="language" required [(ngModel)]="lead.language" selected="1">
+        <nb-option value="1">Option 1</nb-option>
+        <nb-option value="2">Option 2</nb-option>
+        <nb-option value="others">Others</nb-option>
+      </nb-select></div>
+      <div class="col-sm-6 pad10">
+        <label>Prefered Language</label>        
+        <input  type="text" name="other_language" required [(ngModel)]="lead.other_language" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+      </div>
     </div>
-  </div>
-    
+    </form>
 
-</nb-card-body>
-<nb-card-footer>
-  <button  ng-click="submitForm();" type="submit" nbButton [status]="statuses[0]" >
-    Next
- </button>
-</nb-card-footer>
+  </nb-card-body>
+  <nb-card-footer>
+    <button  (click)="addLead(eligibilityForm.form)" type="submit" nbButton [status]="statuses[0]" >
+      Next
+    </button>
+  </nb-card-footer>
 </nb-card>
 
 
@@ -154,10 +165,11 @@
 <nb-card>
   <nb-card-header>Verification</nb-card-header>
 <nb-card-body>
+  <form name="verificationForm" #userForm="ngForm">
   <div class="row">
     <div class="col-sm-6 pad10">
       <label>Current Resident Type</label>
-      <nb-select selected="1">
+      <nb-select selected="1" name="current_resident" required [(ngModel)]="lead.current_resident">
         <nb-option value="1">Owned</nb-option>
         <nb-option value="2">Rented</nb-option>
         <nb-option value="2">Paying Guest</nb-option>
@@ -179,7 +191,7 @@
         </div>
     </div>
     <div class="col-sm-6 pad10"><label>Do you have a PAN Card Copy</label> 
-      <nb-radio-group >
+      <nb-radio-group name="pan" required [(ngModel)]="lead.pan">
         <nb-radio
           [value]="'Yes'">
          Yes
@@ -192,44 +204,48 @@
     </div>
     <div class="col-sm-6 pad10"> 
       <label>Income proof</label>
-      <nb-select selected="1">
+      <nb-select selected="1" name="income_proof" required [(ngModel)]="lead.income_proof">
         <nb-option value="1">Option 1</nb-option>
         <nb-option value="2">Option 2</nb-option>
       </nb-select>
     </div>
     <div class="col-sm-6 pad10">
+      <label>Office Address</label>
+      <textarea rows="5" name="office_address" required [(ngModel)]="lead.office_address" nbInput fullWidth shape="round"  placeholder="Text Area"></textarea>
+    </div>
+    <div class="col-sm-6 pad10">
       <label>Office City</label>
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+      <input type="text" name="off_city" required [(ngModel)]="lead.off_city" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
 
       </div>
     <div class="col-sm-6 pad10">
       <label>Office Pin Code</label>
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+      <input type="text" name="off_pincode" required [(ngModel)]="lead.off_pincode" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
 
       </div>
     <div class="col-sm-6 pad10">
       <label>Official Email</label>
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+      <input type="text" name="off_email" required [(ngModel)]="lead.off_email" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
 
       </div>
     <div class="col-sm-6 pad10">
       <label>Address Proof for Office</label> 
-      <nb-select selected="1">
+      <nb-select selected="1" name="off_add_proof" required [(ngModel)]="lead.off_add_proof">
         <nb-option value="1">Option 1</nb-option>
         <nb-option value="2">Option 2</nb-option>
       </nb-select>
     </div>
     <div class="col-sm-6 pad10">
       <label>Business Stability</label> 
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+      <input type="text" name="bus_stab" required [(ngModel)]="lead.bus_stab" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
     </div>
     <div class="col-sm-6 pad10">
       <label>Overall Work Experience</label> 
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+      <input type="text" name="experience" required [(ngModel)]="lead.experience" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
     </div>
     <div class="col-sm-6 pad10">
       <label>Do you have latest credit card statement </label>
-      <nb-radio-group >
+      <nb-radio-group name="cc_statement" required [(ngModel)]="lead.cc_statement">
         <nb-radio
           [value]="'Yes'">
          Yes
@@ -241,9 +257,10 @@
       </nb-radio-group>
     </div>
   </div>
+  </form>
 </nb-card-body>
 <nb-card-footer>
-  <button  ng-click="submitForm();" type="submit" nbButton [status]="statuses[0]" >
+  <button   (click)="addLead(verificationForm.form)" type="submit" nbButton [status]="statuses[0]" >
     Next
  </button>
 </nb-card-footer>
@@ -252,17 +269,18 @@
 <nb-card>
   <nb-card-header>Property Details</nb-card-header>
 <nb-card-body>
+  <form name="propertyForm" #userForm="ngForm">
   <div class="row">
     <div class="col-sm-6 pad10">
       <label>Mortage Type</label>
-      <nb-select selected="1">
+      <nb-select selected="1" name="mortage_type" required [(ngModel)]="lead.mortage_type">
         <nb-option value="1">Plot</nb-option>
         <nb-option value="2">House</nb-option>
         </nb-select>
     </div>
     <div class="col-sm-6 pad10">
       <label>Purchase Type</label>
-      <nb-select selected="1">
+      <nb-select selected="1" name="purchase_type" required [(ngModel)]="lead.purchase_type">
         <nb-option value="1">Plot</nb-option>
         <nb-option value="2">Flat</nb-option>
         <nb-option value="2">Plot + Construction</nb-option>
@@ -272,21 +290,21 @@
     </div>
     <div class="col-sm-6 pad10">
       <label>Approval Status</label>
-      <nb-select selected="1">
+      <nb-select selected="1" name="approval_status" required [(ngModel)]="lead.approval_status">
         <nb-option value="1">Plot</nb-option>
         <nb-option value="2">House</nb-option>
         </nb-select>
     </div>
     <div class="col-sm-6 pad10">
       <label>House Type</label>
-      <nb-select selected="1">
+      <nb-select selected="1" name="house_type" required [(ngModel)]="lead.house_type">
         <nb-option value="1">New</nb-option>
         <nb-option value="2">Resale</nb-option>
         </nb-select>
     </div>
     <div class="col-sm-6 pad10">
       <label>Do you have building plan approval</label>
-      <nb-radio-group >
+      <nb-radio-group name="build_approval" required [(ngModel)]="lead.build_approval">
         <nb-radio
           [value]="'Yes'">
          Yes
@@ -299,36 +317,36 @@
     </div>
     <div class="col-sm-6 pad10">
       <label>Land Size</label>
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
+      <input type="text" name="land_size" required [(ngModel)]="lead.land_size" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
     </div>
     <div class="col-sm-6 pad10">
       <label>Construction Size</label>
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
+      <input type="text" name="cons_size" required [(ngModel)]="lead.cons_size" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
     </div>
     <div class="col-sm-6 pad10">
       <label>Construction Cost Estimation</label>
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
+      <input type="text" name="cons_estimate" required [(ngModel)]="lead.cons_estimate" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
     </div>
     <div class="col-sm-6 pad10">
       <label>Built up area </label>
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
+      <input type="text" name="build_area" required [(ngModel)]="lead.build_area" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
     </div>
     <div class="col-sm-6 pad10">
       <label>Property Location</label>
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
+      <input type="text" name="property_location" required [(ngModel)]="lead.property_location" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
 
     </div>
     <div class="col-sm-6 pad10">
       <label>Current Market Value</label>
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
+      <input type="text" name="market_value" required [(ngModel)]="lead.market_value" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
     </div>
     <div class="col-sm-6 pad10">
       <label>Purchase Rate</label>
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
+      <input type="text" name="purchase_rate" required [(ngModel)]="lead.purchase_rate" nbInput fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
     </div>
     <div class="col-sm-6 pad10">
       <label>Have you Made advance payment</label>
-      <nb-radio-group >
+      <nb-radio-group name="advance_pay" required [(ngModel)]="lead.advance_pay" >
         <nb-radio
           [value]="'Yes'">
          Yes
@@ -341,9 +359,10 @@
     </div>
     
       </div>
+    </form>
   </nb-card-body>
   <nb-card-footer>
-    <button  ng-click="submitForm();" type="submit" nbButton [status]="statuses[0]" >
+    <button   (click)="addLead(propertyForm.form)" type="submit" nbButton [status]="statuses[0]" >
       Next
   </button>
   </nb-card-footer>
@@ -354,37 +373,40 @@
 <nb-card>
   <nb-card-header>KYC Completed</nb-card-header>
 <nb-card-body>
+  <form name="kycForm" #userForm="ngForm">
   <div class="row">
     <div class="col-sm-6 pad10">
-      <label>Aadhar Card</label><input type="file"  nbInput fullWidth placeholder="Full Name">
+      <label>Aadhar Card</label>
+      <input type="file"  name="aadhar" required [(ngModel)]="lead.aadhar" nbInput fullWidth placeholder="Full Name">
     </div>
     <div class="col-sm-6 pad10">
       <label>PAN Card</label>
-      <input type="file"  nbInput fullWidth placeholder="Full Name">
+      <input type="file" name="pancard" required [(ngModel)]="lead.pancard" nbInput fullWidth placeholder="Full Name">
     </div>
     <div class="col-sm-6 pad10">
       <label>Address Proof</label> 
-      <input type="file"  nbInput fullWidth placeholder="Full Name"></div>
+      <input type="file"  name="address_proof" required [(ngModel)]="lead.address_proof" nbInput fullWidth placeholder="Full Name"></div>
     <div class="col-sm-6 pad10">
        <label>Income Proof</label> 
-       <input type="file"  nbInput fullWidth placeholder="Full Name">
+       <input type="file"  name="income_proof" required [(ngModel)]="lead.income_proof" nbInput fullWidth placeholder="Full Name">
     </div>
     <div class="col-sm-6 pad10">
       <label>ID Card</label>
-      <input type="file"  nbInput fullWidth placeholder="Full Name">
+      <input type="file"  name="id_proof" required [(ngModel)]="lead.id_proof" nbInput fullWidth placeholder="Full Name">
       </div>
     <div class="col-sm-6 pad10">
       <label>Bank Statement</label>
-      <input type="file"  nbInput fullWidth placeholder="Full Name">
+      <input type="file"  name="bank_statement" required [(ngModel)]="lead.bank_statement" nbInput fullWidth placeholder="Full Name">
     </div>
     <div class="col-sm-6 pad10">
       <label>Credit Card Statement</label>
-      <input type="file"  nbInput fullWidth placeholder="Full Name">
+      <input type="file"  name="cc_statement_att" required [(ngModel)]="lead.cc_statement_att" nbInput fullWidth placeholder="Full Name">
     </div>
   </div>
+  </form>
   </nb-card-body>
   <nb-card-footer>
-    <button  ng-click="submitForm();" type="submit" nbButton [status]="statuses[0]" >
+    <button   (click)="addLead(kycForm.form)" type="submit" nbButton [status]="statuses[0]" >
       Next
   </button>
   </nb-card-footer>
@@ -393,30 +415,31 @@
 <nb-card>
   <nb-card-header>Offer Updated</nb-card-header>
 <nb-card-body>
+  <form name="offerForm" #userForm="ngForm">
   <div class="row">
     <div class="col-sm-6 pad10">
       <label>Bank Name</label>
-      <nb-select selected="1">
+      <nb-select selected="1"name="offer_bank" required [(ngModel)]="lead.offer_bank" >
         <nb-option value="1">Option 1</nb-option>
         <nb-option value="2">Option 2</nb-option>
       </nb-select>
     </div>
     <div class="col-sm-6 pad10">
       <label>Card Name</label>
-      <nb-select selected="1">
+      <nb-select selected="1" name="offer_cc" required [(ngModel)]="lead.offer_cc">
         <nb-option value="1">Option 1</nb-option>
         <nb-option value="2">Option 2</nb-option>
       </nb-select>
     </div>
     <div class="col-sm-6 pad10">
       <label>Loan Amount Applied for</label>
-      <input type="text"  nbInput fullWidth placeholder="Full Name">
+      <input type="text" name="laa" required [(ngModel)]="lead.laa"  nbInput fullWidth placeholder="Full Name">
     </div>
     
    
     <div class="col-sm-6 pad10">
       <label>Application Submitted to Bank</label>
-      <nb-radio-group >
+      <nb-radio-group name="app_sub_bank" required [(ngModel)]="lead.app_sub_bank">
         <nb-radio
           [value]="'Yes'">
          Yes
@@ -431,11 +454,11 @@
     <div class="col-sm-6 pad10">
       <label>Credit Score</label>
       
-      <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+      <input type="text" name="credit_score" required [(ngModel)]="lead.credit_score" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
     </div>
     <div class="col-sm-6 pad10">
       <label>AIP Pass</label>
-      <nb-radio-group >
+      <nb-radio-group name="aip_pass" required [(ngModel)]="lead.aip_pass">
         <nb-radio
           [value]="'Yes'">
          Yes
@@ -447,9 +470,10 @@
       </nb-radio-group>
     </div>
   </div>
+  </form>
   </nb-card-body>
   <nb-card-footer>
-    <button  ng-click="submitForm();" type="submit" nbButton [status]="statuses[0]" >
+    <button   (click)="addLead(offerForm.form)" type="submit" nbButton [status]="statuses[0]" >
       Next
   </button>
   </nb-card-footer>

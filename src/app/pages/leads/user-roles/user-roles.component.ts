@@ -64,7 +64,7 @@ export class UserRolesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addUserrole(frm) {
+  addUserole(frm) {
     frm.markAllAsTouched();
     if (frm.valid) {
       this.useroles.push(this.userole);
@@ -74,7 +74,7 @@ export class UserRolesComponent implements OnInit {
     }
   }
 
-  editUser(data) {
+  editUserole(data) {
     console.log(data);
   }
 

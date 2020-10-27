@@ -60,7 +60,7 @@ export class UserComponent implements OnInit {
     this.source.load(this.users);
   }
 
-  addUser(frm){
+  addUser(frm) {
     frm.markAllAsTouched();
     if (frm.valid) {
       this.users.push(this.user);

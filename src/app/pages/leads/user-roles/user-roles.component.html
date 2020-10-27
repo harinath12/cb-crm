@@ -23,14 +23,14 @@
                 <label>Permissions</label>
             </div>
             <div class="col-sm-6 demo-items pad10">
-                <nb-checkbox [value]="true" required [(ngModel)]="userole.permission">Add</nb-checkbox>
-                <nb-checkbox [value]="true" required [(ngModel)]="userole.permission">Edit</nb-checkbox>
+                <nb-checkbox [value]="true" name="permission" [(ngModel)]="userole.permission">Add</nb-checkbox>
+                <nb-checkbox [value]="true"  name="permission"  [(ngModel)]="userole.permission">Edit</nb-checkbox>
             </div>
         </div>
     </form>
     </nb-card-body>
     <nb-card-footer>
-        <button (click)="addUserrole(useroleForm.form)" nbButton [status]="'primary'">
+        <button (click)="addUserole(useroleForm.form)" nbButton [status]="'primary'">
           Add Role
         </button>
     </nb-card-footer>
