@@ -1,1 +1,36 @@
-<p>profile works!</p>
+<nb-card>
+    <nb-card-header>
+        Profile DetailsS
+    </nb-card-header>
+    <nb-card-body>
+        <form name="profileForm" #userForm="ngForm">
+            <div class="row">
+                <div class="col-sm-6 pad10">
+                    <label>Name</label>
+                    <input type="text" name="fname" [(ngModel)]="profile.fname" required nbInput fullWidth placeholder="Full Name">
+                </div>
+                <div class="col-sm-6 pad10">
+                    <label>Email</label>
+                    <input type="text" name="email" [(ngModel)]="profile.email" required nbInput fullWidth placeholder="Email">
+                </div>
+                <div class="col-sm-6 pad10">
+                    <label>Phone</label>
+                    <input type="text" name="phone" [(ngModel)]="profile.phone" required nbInput fullWidth placeholder="Phone Number">
+                </div>
+                <div class="col-sm-6 pad10">
+                    <label>Date Of Birth</label>
+                    <input name="dob" required [(ngModel)]="profile.dob" nbInput fullwidth class="dpwidth"
+                    placeholder="Form Picker"
+                    [nbDatepicker]="formpicker">
+                <nb-datepicker #formpicker></nb-datepicker>
+                </div>
+            </div>
+        </form>
+    </nb-card-body>
+    <nb-card-footer>
+        <button  (click)="updateProfile(profileForm.form)" type="submit" nbButton [status]="statuses[0]" >
+            Update
+        </button>
+    </nb-card-footer>
+</nb-card>
+

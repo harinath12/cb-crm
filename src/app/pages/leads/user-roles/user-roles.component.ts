@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
-
+import { LocalDataSource } from 'ng2-smart-table';
 
 
 @Component({
@@ -12,6 +12,11 @@ export class UserRolesComponent implements OnInit {
   statuses: NbComponentStatus[] = [ 'primary', 'success', 'info', 'warning', 'danger' ];
   shapes: NbComponentShape[] = [ 'rectangle', 'semi-round', 'round' ];
   sizes: NbComponentSize[] = [ 'tiny', 'small', 'medium', 'large', 'giant' ];
+
+  userole: any = {};
+  useroleForm: any = {};
+  useroles = [];
+  source: LocalDataSource = new LocalDataSource();
 
   settings = {
     actions: {
@@ -52,14 +57,33 @@ export class UserRolesComponent implements OnInit {
   };
 
   sources = [];
+  showForm: false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onDeleteConfirm(e){
+  addUserole(frm) {
+    frm.markAllAsTouched();
+    if (frm.valid) {
+      this.useroles.push(this.userole);
+      this.source.load(this.useroles);
+      this.showForm = false;
+      this.userole = {};
+    }
+  }
 
+  editUserole(data) {
+    console.log(data);
+  }
+
+  onDeleteConfirm(e) {
+
+  }
+
+  customEvent(e) {
+    console.log(e);
   }
 
 }

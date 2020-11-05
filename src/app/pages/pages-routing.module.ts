@@ -5,10 +5,6 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
-import {LeadsComponent} from "./leads/leads.component";
-import {ProfileComponent} from "./profile/profile.component";
-import {ReportsComponent} from "./reports/reports.component";
-import {SettingsComponent} from "./settings/settings.component";
 
 
 

@@ -4,9 +4,9 @@ import {LeadsComponent} from './leads.component';
 import { AddLeadComponent } from './add-lead/add-lead.component';
 import { UserComponent } from './user/user.component';
 import { UserRolesComponent } from './user-roles/user-roles.component';
-import { SettingsComponent } from '../settings/settings.component';
-import { ReportsComponent } from '../reports/reports.component';
-import { ProfileComponent } from '../profile/profile.component';
+import { SettingsComponent } from './settings/settings.component';
+import { ReportsComponent } from './reports/reports.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [{

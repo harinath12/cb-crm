@@ -1,6 +1,24 @@
+
+<nb-card>
+ <nb-card-header>
+  <a   ui-sref="../leads/add" nbButton [status]="'primary'" class="align-right">New Lead</a>
+  </nb-card-header>
+</nb-card>
+
 <nb-card>
   <nb-card-header>
-    Smart Table
+    Followup Leads
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+
+<nb-card>
+  <nb-card-header>
+    Leads
   </nb-card-header>
 
   <nb-card-body>
