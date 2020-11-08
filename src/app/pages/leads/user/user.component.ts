@@ -70,15 +70,18 @@ export class UserComponent implements OnInit {
     }
   }
 
-  editUser(data) {
-    console.log(data);
+  editUser(data){
+    this.user = data;
+    this.showForm = true;
   }
 
-  onDeleteConfirm(e) {
-
+  onDeleteConfirm(e){
+    
   }
 
-  customEvent(e) {
-    console.log(e);
+  customEvent(e){
+    if(e.action == 'editAction'){
+      this.editUser(e.data);
+    }
   }
 }

@@ -22,6 +22,24 @@
         <ng-template #labelFour>Fourth step</ng-template>
         <h3>Step content #4</h3>
         <button nbButton nbStepperPrevious>prev</button>
+        <button nbButton nbStepperNext>next</button>
+      </nb-step>
+      
+      <nb-step [label]="labelTwo1">
+        <ng-template #labelTwo1>Second step</ng-template>
+        <h3>Step content #2</h3>
+        <button nbButton nbStepperPrevious>prev</button>
+        <button nbButton nbStepperNext>next</button>
+      </nb-step>
+      <nb-step label="Third step2">
+        <h3>Step content #3</h3>
+        <button nbButton nbStepperPrevious>prev</button>
+        <button nbButton nbStepperNext>next</button>
+      </nb-step>
+      <nb-step [label]="labelFour3">
+        <ng-template #labelFour3>Fourth step</ng-template>
+        <h3>Step content #4</h3>
+        <button nbButton nbStepperPrevious>prev</button>
         <button nbButton disabled nbStepperNext>next</button>
       </nb-step>
     </nb-stepper>

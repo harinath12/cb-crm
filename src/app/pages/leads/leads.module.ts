@@ -7,6 +7,7 @@ import { NbCardModule, NbIconModule, NbInputModule, NbTreeGridModule,
   NbRadioModule,
   NbSelectModule,
   NbUserModule,
+  NbStepperModule
  } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
@@ -30,6 +31,7 @@ import { FormsModule } from '@angular/forms';
     NbTreeGridModule,
     NbIconModule,
     NbInputModule,
+    NbStepperModule,
     ThemeModule,
     Ng2SmartTableModule,
     LeadsRoutingModule,
