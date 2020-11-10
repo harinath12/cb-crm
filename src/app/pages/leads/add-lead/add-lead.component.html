@@ -22,7 +22,7 @@
         </nb-card>
 
         <button nbButton disabled nbStepperNext>prev</button>
-        <button nbButton [status]="statuses[0]" nbStepperNext>next</button>
+        <button nbButton [status]="statuses[0]" class="flr" nbStepperNext>next</button>
       </nb-step>
 
       <nb-step label="Eligibility">
@@ -203,7 +203,7 @@
           </nb-card-footer> -->
         </nb-card>
         <button nbButton [status]="statuses[2]" nbStepperNext>prev</button>
-        <button nbButton [status]="statuses[0]" nbStepperNext>next</button>
+        <button nbButton [status]="statuses[0]" class="flr" nbStepperNext>next</button>
       </nb-step>
       <nb-step label="Verification">
         <nb-card>
@@ -325,7 +325,7 @@
           </nb-card-footer> -->
         </nb-card>
         <button nbButton [status]="statuses[2]" nbStepperPrevious>prev</button>
-        <button nbButton [status]="statuses[0]" nbStepperNext>next</button>
+        <button nbButton [status]="statuses[0]" class="flr" nbStepperNext>next</button>
       </nb-step>
       <nb-step [label]="labelFour" *ngIf="lead.etype=='Home Loan' || lead.etype=='Mortage Loan'">
         <ng-template #labelFour>Property Details</ng-template>
@@ -448,7 +448,7 @@
           </nb-card-footer> -->
         </nb-card>
         <button nbButton [status]="statuses[2]" nbStepperPrevious>prev</button>
-        <button nbButton [status]="statuses[0]" nbStepperNext>next</button>
+        <button nbButton [status]="statuses[0]" class="flr" nbStepperNext>next</button>
       </nb-step>
 
       <nb-step [label]="labelFive">
@@ -502,7 +502,7 @@
           </nb-card-footer> -->
         </nb-card>
         <button nbButton [status]="statuses[2]" nbStepperPrevious>prev</button>
-        <button nbButton [status]="statuses[0]" nbStepperNext>next</button>
+        <button nbButton [status]="statuses[0]" class="flr" nbStepperNext>next</button>
       </nb-step>
       <nb-step [label]="labelSix">
         <ng-template #labelSix>Offer Updated</ng-template>
@@ -572,7 +572,7 @@
           </nb-card-footer> -->
         </nb-card>
         <button nbButton [status]="statuses[2]" nbStepperPrevious>prev</button>
-        <button nbButton [status]="statuses[0]" disabled nbStepperNext>next</button>
+        <button nbButton [status]="statuses[0]" class="flr" disabled nbStepperNext>Submit</button>
       </nb-step>
     </nb-stepper>
   </nb-card-body>

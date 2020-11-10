@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'app/shared/service/api.service';
 import { LocalDataSource } from 'ng2-smart-table';
 
 
@@ -29,38 +30,32 @@ settings = {
     },
     columns: {
       id: {
-        title: 'ID',
+        title: 'Lead Info',
         type: 'number',
       },
-      firstName: {
-        title: 'First Name',
-        type: 'string',
-      },
-      lastName: {
-        title: 'Last Name',
-        type: 'string',
-      },
-      username: {
-        title: 'Username',
+      name: {
+        title: 'Creater Info',
         type: 'string',
       },
       email: {
-        title: 'E-mail',
+        title: 'Customer Info',
         type: 'string',
       },
       age: {
-        title: 'Age',
-        type: 'number',
+        title: 'Product Details',
+        type: 'string',
+      },
+      stage: {
+        title: 'Current Stage',
+        type: 'string',
       },
     },
   };
 
   source: LocalDataSource = new LocalDataSource();
 
- /* constructor(private service: SmartTableData) {
-    const data = this.service.getData();
-    this.source.load(data);
-  }*/
+ constructor(public apiService: ApiService) {
+  }
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
@@ -70,9 +65,10 @@ settings = {
     }
   }
 
-  constructor() { }
-
   ngOnInit(): void {
+    this.apiService.getLeads().subscribe(res => {
+    this.source.load(res.data);
+    });
   }
 
 }

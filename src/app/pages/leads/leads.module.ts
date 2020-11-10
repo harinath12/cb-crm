@@ -21,6 +21,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { ReportsComponent } from './reports/reports.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule } from '@angular/forms';
+import { ApiService } from 'app/shared/service/api.service';
 
 
 
@@ -52,6 +53,9 @@ import { FormsModule } from '@angular/forms';
   SettingsComponent,
   ReportsComponent,
   ProfileComponent,
+],
+providers: [
+  ApiService,
 ],
 })
 export class LeadsModule {
