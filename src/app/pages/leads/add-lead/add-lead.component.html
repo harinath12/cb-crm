@@ -10,17 +10,21 @@
             <div class="col-sm-4 pad10">
               <label>Select Product</label></div>
             <div class="col-sm-4 pad10">
-              <nb-select selected="1">
-                <nb-option value="1">Option 1</nb-option>
-                <nb-option value="2">Option 2</nb-option>
+              <nb-select [(ngModel)]="lead.etype" placeholder="Select Product">
+                <nb-option value="Credit Card">Credit Card</nb-option>
+                <nb-option value="Home Loan">Home Loan</nb-option>
+                <nb-option value="Personal Loan">Personal Loan</nb-option>
+                <nb-option value="Business Loan">Business Loan</nb-option>
+                <nb-option value="Mortage Loan">Mortage Loan</nb-option>
               </nb-select>
             </div>
           </nb-card-body>
         </nb-card>
 
         <button nbButton disabled nbStepperNext>prev</button>
-        <button nbButton nbStepperNext>next</button>
+        <button nbButton [status]="statuses[0]" nbStepperNext>next</button>
       </nb-step>
+
       <nb-step label="Eligibility">
         <nb-card>
           <nb-card-header>Eligibility</nb-card-header>
@@ -30,7 +34,7 @@
               <div class="row">
                 <div class="col-sm-4 pad10 ">
                   <label>Name(As per PAN)</label>
-                  <input type="text" name="fname" required [(ngModel)]="lead.fname" nbInput fullWidth
+                  <input type="text" name="fname" required [(ngModel)]="lead.name" nbInput fullWidth
                     placeholder="Full Name">
                 </div>
                 <div class="col-sm-4 pad10">
@@ -47,79 +51,95 @@
                 <div class="col-sm-4 pad10">
                   <label>Mobile Number</label>
                   <input type="text" name="mobile" required [(ngModel)]="lead.mobile" nbInput fullWidth
-                    shape="rectangle" placeholder="Rectangle border">
+                    shape="rectangle" placeholder="Mobile Number">
                 </div>
                 <div class="col-sm-4 pad10"> <label>Email</label>
                   <input type="text" name="email" required [(ngModel)]="lead.email" nbInput fullWidth shape="rectangle"
-                    placeholder="Rectangle border">
+                    placeholder="Email">
                 </div>
                 <div class="col-sm-4 pad10">
                   <label>Date of Birth</label>
                   <input readonly name="dob" required [(ngModel)]="lead.dob" nbInput fullwidth class="dpwidth"
-                    placeholder="Form Picker" [nbDatepicker]="formpicker">
+                    placeholder="Date Of Birth " [nbDatepicker]="formpicker">
                   <nb-datepicker #formpicker></nb-datepicker>
                 </div>
                 <div class="col-sm-4 pad10">
                   <label>Current Address</label>
-                  <textarea rows="5" name="current_address" required [(ngModel)]="lead.current_address" nbInput
-                    fullWidth shape="round" placeholder="Text Area"></textarea>
+                  <textarea rows="5" name="current_address" required [(ngModel)]="lead.meta.current_address" nbInput
+                    fullWidth shape="round" placeholder="Complete Address"></textarea>
                 </div>
                 <div class="col-sm-4 pad10">
                   <label>Current City</label>
-                  <nb-select name="current_location" required [(ngModel)]="lead.current_location" selected="1">
+                  <nb-select name="current_location" required [(ngModel)]="lead.meta.current_location" selected="1">
                     <nb-option value="1">Option 1</nb-option>
                     <nb-option value="2">Option 2</nb-option>
                   </nb-select>
                 </div>
                 <div class="col-sm-4 pad10">
                   <label>Current Location Pincode</label>
-                  <input type="text" name="picode" required [(ngModel)]="lead.pincode" nbInput fullWidth
+                  <input type="text" name="picode" required [(ngModel)]="lead.zip" nbInput fullWidth
                     shape="rectangle" placeholder="Pincode"></div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.etype!='Business Loan'">
                   <label>Occupation</label>
-                  <nb-select name="occupation" required [(ngModel)]="lead.occupation" selected="1">
-                    <nb-option value="1">Option 1</nb-option>
-                    <nb-option value="2">Option 2</nb-option>
+                  <nb-select name="occupation" required [(ngModel)]="lead.occupation" placeholder="Occupation">
+                    <nb-option value="Salaried">Salaried</nb-option>
+                    <nb-option value="Self Employed">Self Employed</nb-option>
+                    <nb-option value="Unemployed">Unemployed</nb-option>
+                    <nb-option value="Retired">Retired</nb-option>
+                    <nb-option value="Student">Student</nb-option>
+                    <nb-option value="Home Maker">Home Maker</nb-option>
                   </nb-select>
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.etype=='Business Loan'">
+                  <label>Business Type</label>
+                  <nb-select name="business_type" required [(ngModel)]="lead.meta.business_type" placeholder="Business Type">
+                    <nb-option value="Proprietorship">Proprietorship Company </nb-option>
+                    <nb-option value="Private limited">Private limited Company</nb-option>
+                    <nb-option value="Partnership">Partnership Company</nb-option>
+                    <nb-option value="LLP">LLP</nb-option>
+                    <nb-option value="Others">Others</nb-option>
+                    <nb-option value="Not registered">Not registered</nb-option>
+                  </nb-select>
+                </div>
+                <div class="col-sm-4 pad10" *ngIf="lead.occupation=='Salaried'">
                   <label>Company Name</label>
-                  <input type="text" name="company_name" required [(ngModel)]="lead.company_name" nbInput fullWidth
-                    shape="rectangle" placeholder="Rectangle border">
+                  <input type="text" name="company_name" required [(ngModel)]="lead.company" nbInput fullWidth
+                    shape="rectangle" placeholder="Company Name" >
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.occupation=='Salaried'">
                   <label>Monthly Income</label>
-                  <input type="text" name="monthly_income" required [(ngModel)]="lead.monthly_income" nbInput fullWidth
-                    shape="rectangle" placeholder="Rectangle border">
+                  <input type="text" name="monthly_income" required [(ngModel)]="lead.monthly" nbInput fullWidth
+                    shape="rectangle" placeholder="Monthly Income" >
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.occupation=='Salaried'">
                   <label>I receive salary by</label>
-                  <nb-select name="receive_salary" required [(ngModel)]="lead.receive_salary" selected="1">
-                    <nb-option value="1">Option 1</nb-option>
-                    <nb-option value="2">Option 2</nb-option>
+                  <nb-select name="receive_salary" required [(ngModel)]="lead.receive_salary" selected="1"  placeholder="I receive salary by">
+                    <nb-option value="Cash">Cash</nb-option>
+                    <nb-option value="Cheque">Cheque</nb-option>
+                    <nb-option value="Bank Transfer">Bank Transfer</nb-option>
                   </nb-select>
                 </div>
 
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.receive_salary=='Bank Transfer'">
                   <label>Bank Name</label>
-                  <nb-select name="bank_name" required [(ngModel)]="lead.bank_name" selected="1">
+                  <nb-select name="bank_name" required [(ngModel)]="lead.meta.bank_name" selected="1">
                     <nb-option value="1">Option 1</nb-option>
                     <nb-option value="2">Option 2</nb-option>
                   </nb-select>
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.occupation=='Self Employed' || lead.etype=='Business Loan' ">
                   <label>Latest Year Income after Tax</label>
-                  <input type="text" name="yearly_income" required [(ngModel)]="lead.yearly_income" nbInput fullWidth
-                    shape="rectangle" placeholder="Rectangle border">
+                  <input type="text" name="yearly_income" required [(ngModel)]="lead.income" nbInput fullWidth
+                    shape="rectangle" placeholder="Latest Year Income after Tax">
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.occupation=='Self Employed' || lead.etype=='Business Loan'">
                   <label>Current Account Bank Name</label>
-                  <input type="text" name="acc_bank" required [(ngModel)]="lead.acc_bank" nbInput fullWidth
-                    shape="rectangle" placeholder="Rectangle border">
+                  <input type="text" name="acc_bank" required [(ngModel)]="lead.meta.cabank" nbInput fullWidth
+                    shape="rectangle" placeholder="Current Account Bank">
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.etype!='Credit Card' || lead.etype=='Business Loan'">
                   <label>Are you Paying Monthly EMI</label>
-                  <nb-radio-group name="emi" required [(ngModel)]="lead.emi">
+                  <nb-radio-group name="emi" required [(ngModel)]="lead.cc">
                     <nb-radio [value]="'Yes'">
                       Yes
                     </nb-radio>
@@ -128,13 +148,13 @@
                     </nb-radio>
                   </nb-radio-group>
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.etype!='Credit Card' && lead.cc=='Yes'" >
                   <label>Total EMIs you currently pay per month </label>
-                  <input type="text" name="monthly_emi" required [(ngModel)]="lead.monthly_emi" nbInput fullWidth
+                  <input type="text" name="monthly_emi" required [(ngModel)]="lead.creditlimit" nbInput fullWidth
                     shape="rectangle" placeholder=" ">
 
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.etype== 'Credit Card'">
                   <label>Do you have existing Credit Card</label>
                   <nb-radio-group name="cc" required [(ngModel)]="lead.cc">
                     <nb-radio [value]="'Yes'">
@@ -145,43 +165,45 @@
                     </nb-radio>
                   </nb-radio-group>
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.etype=='Credit Card' && lead.cc== 'Yes'">
                   <label>Bank Name</label>
-                  <input type="text" name="cc_bank" required [(ngModel)]="lead.cc_bank" nbInput fullWidth
+                  <input type="text" name="cc_bank" required [(ngModel)]="lead.banks" nbInput fullWidth
                     shape="rectangle" placeholder="Bank Name">
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.etype=='Credit Card' && lead.cc== 'Yes'">
                   <label>Highest Credit Limit</label>
-                  <input type="text" name="credit_limit" required [(ngModel)]="lead.credit_limit" nbInput fullWidth
+                  <input type="text" name="credit_limit" required [(ngModel)]="lead.creditlimit" nbInput fullWidth
                     shape="rectangle" placeholder="Credit Limit">
                 </div>
 
                 <div class="col-sm-4 pad10">
                   <label>Prefered Language</label>
                   <nb-select name="language" required [(ngModel)]="lead.language" selected="1">
-                    <nb-option value="1">Option 1</nb-option>
-                    <nb-option value="2">Option 2</nb-option>
+                    <nb-option value="English">English</nb-option>
+                    <nb-option value="Tamil">Tamil</nb-option>
                     <nb-option value="others">Others</nb-option>
                   </nb-select>
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.language== 'others'">
                   <label>Prefered Language</label>
-                  <input type="text" name="other_language" required [(ngModel)]="lead.other_language" nbInput fullWidth
-                    shape="rectangle" placeholder="Rectangle border">
+                  <input type="text" name="other_language" required [(ngModel)]="lead.otherlanguage" nbInput fullWidth
+                    shape="rectangle" placeholder="Prefered Language">
                 </div>
               </div>
             </form>
 
           </nb-card-body>
-          <nb-card-footer>
+          <!-- <nb-card-footer>
             <button nbStepperPrevious (click)="addLead(eligibilityForm.form)" type="submit" nbButton [status]="statuses[0]">
               Previous
             </button>
             <button nbStepperNext (click)="addLead(eligibilityForm.form)" type="submit" nbButton [status]="statuses[0]">
               Next
             </button>
-          </nb-card-footer>
+          </nb-card-footer> -->
         </nb-card>
+        <button nbButton [status]="statuses[2]" nbStepperNext>prev</button>
+        <button nbButton [status]="statuses[0]" nbStepperNext>next</button>
       </nb-step>
       <nb-step label="Verification">
         <nb-card>
@@ -191,7 +213,7 @@
               <div class="row">
                 <div class="col-sm-4 pad10">
                   <label>Current Resident Type</label>
-                  <nb-select selected="1" name="current_resident" required [(ngModel)]="lead.current_resident">
+                  <nb-select selected="1" name="current_resident" required [(ngModel)]="lead.meta.current_resident">
                     <nb-option value="1">Owned</nb-option>
                     <nb-option value="2">Rented</nb-option>
                     <nb-option value="2">Paying Guest</nb-option>
@@ -213,7 +235,7 @@
                   </div>
                 </div>
                 <div class="col-sm-4 pad10"><label>Do you have a PAN Card Copy</label>
-                  <nb-radio-group name="pan" required [(ngModel)]="lead.pan">
+                  <nb-radio-group name="pan" required [(ngModel)]="lead.meta.pan">
                     <nb-radio [value]="'Yes'">
                       Yes
                     </nb-radio>
@@ -222,56 +244,66 @@
                     </nb-radio>
                   </nb-radio-group>
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.occupation=='Salaried'">
                   <label>Income proof</label>
-                  <nb-select selected="1" name="income_proof" required [(ngModel)]="lead.income_proof">
-                    <nb-option value="1">Option 1</nb-option>
-                    <nb-option value="2">Option 2</nb-option>
+                  <nb-select name="income_proof" required [(ngModel)]="lead.meta.income_proof">
+                    <nb-option value="3 months payslip">3 months payslip</nb-option>
+                    <nb-option value="Salary certificate ">Salary certificate </nb-option>
+                    <nb-option value="Joining letter">Joining letter </nb-option>
+                    <nb-option value="No Proof">No Proof </nb-option>
+                  </nb-select>
+                </div>
+                <div class="col-sm-4 pad10" *ngIf="lead.occupation=='Self Employed'">
+                  <label>Income proof</label>
+                  <nb-select name="income_proof" required [(ngModel)]="lead.meta.income_proof">
+                    <nb-option value="ITR">ITR</nb-option>
+                    <nb-option value="GST ">GST </nb-option>
+                    <nb-option value="No Proof">No Proof </nb-option>
                   </nb-select>
                 </div>
                 <div class="col-sm-4 pad10">
                   <label>Office Address</label>
-                  <textarea rows="5" name="office_address" required [(ngModel)]="lead.office_address" nbInput fullWidth
+                  <textarea rows="5" name="office_address" required [(ngModel)]="lead.meta.office_address" nbInput fullWidth
                     shape="round" placeholder="Text Area"></textarea>
                 </div>
                 <div class="col-sm-4 pad10">
                   <label>Office City</label>
-                  <input type="text" name="off_city" required [(ngModel)]="lead.off_city" nbInput fullWidth
-                    shape="rectangle" placeholder="Rectangle border">
+                  <input type="text" name="off_city" required [(ngModel)]="lead.meta.off_city" nbInput fullWidth
+                    shape="rectangle" placeholder="Office City">
 
                 </div>
                 <div class="col-sm-4 pad10">
                   <label>Office Pin Code</label>
-                  <input type="text" name="off_pincode" required [(ngModel)]="lead.off_pincode" nbInput fullWidth
-                    shape="rectangle" placeholder="Rectangle border">
+                  <input type="text" name="off_pincode" required [(ngModel)]="lead.meta.off_pincode" nbInput fullWidth
+                    shape="rectangle" placeholder="Office Pin Code">
 
                 </div>
                 <div class="col-sm-4 pad10">
                   <label>Official Email</label>
-                  <input type="text" name="off_email" required [(ngModel)]="lead.off_email" nbInput fullWidth
-                    shape="rectangle" placeholder="Rectangle border">
+                  <input type="text" name="off_email" required [(ngModel)]="lead.meta.off_email" nbInput fullWidth
+                    shape="rectangle" placeholder="Official Email">
 
                 </div>
                 <div class="col-sm-4 pad10">
                   <label>Address Proof for Office</label>
-                  <nb-select selected="1" name="off_add_proof" required [(ngModel)]="lead.off_add_proof">
+                  <nb-select selected="1" name="off_add_proof" required [(ngModel)]="lead.meta.off_add_proof">
                     <nb-option value="1">Option 1</nb-option>
                     <nb-option value="2">Option 2</nb-option>
                   </nb-select>
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.occupation=='Self Employed'">
                   <label>Business Stability</label>
-                  <input type="text" name="bus_stab" required [(ngModel)]="lead.bus_stab" nbInput fullWidth
-                    shape="rectangle" placeholder="Rectangle border">
+                  <input type="text" name="bus_stab" required [(ngModel)]="lead.meta.bus_stab" nbInput fullWidth
+                    shape="rectangle" placeholder="Business Stability">
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.occupation=='Salaried'">
                   <label>Overall Work Experience</label>
-                  <input type="text" name="experience" required [(ngModel)]="lead.experience" nbInput fullWidth
-                    shape="rectangle" placeholder="Rectangle border">
+                  <input type="text" name="experience" required [(ngModel)]="lead.meta.experience" nbInput fullWidth
+                    shape="rectangle" placeholder="Overall Work Experience">
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.etype=='Credit Card' && lead.cc== 'Yes'">
                   <label>Do you have latest credit card statement </label>
-                  <nb-radio-group name="cc_statement" required [(ngModel)]="lead.cc_statement">
+                  <nb-radio-group name="cc_statement" required [(ngModel)]="lead.meta.cc_statement">
                     <nb-radio [value]="'Yes'">
                       Yes
                     </nb-radio>
@@ -283,59 +315,62 @@
               </div>
             </form>
           </nb-card-body>
-          <nb-card-footer>
+          <!-- <nb-card-footer>
             <button nbStepperPrevious (click)="addLead(verificationForm.form)" type="submit" nbButton [status]="statuses[0]">
               Previous
             </button>
             <button nbStepperNext (click)="addLead(verificationForm.form)" type="submit" nbButton [status]="statuses[0]">
               Next
             </button>
-          </nb-card-footer>
+          </nb-card-footer> -->
         </nb-card>
-        <button nbButton nbStepperPrevious>prev</button>
-        <button nbButton nbStepperNext>next</button>
+        <button nbButton [status]="statuses[2]" nbStepperPrevious>prev</button>
+        <button nbButton [status]="statuses[0]" nbStepperNext>next</button>
       </nb-step>
-      <nb-step [label]="labelFour">
+      <nb-step [label]="labelFour" *ngIf="lead.etype=='Home Loan' || lead.etype=='Mortage Loan'">
         <ng-template #labelFour>Property Details</ng-template>
         <nb-card>
           <nb-card-header>Property Details</nb-card-header>
           <nb-card-body>
             <form name="propertyForm" #userForm="ngForm">
               <div class="row">
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.etype=='Mortage Loan'">
                   <label>Mortage Type</label>
-                  <nb-select selected="1" name="mortage_type" required [(ngModel)]="lead.mortage_type">
-                    <nb-option value="1">Plot</nb-option>
-                    <nb-option value="2">House</nb-option>
+                  <nb-select  name="mortage_type" required [(ngModel)]="lead.meta.mortage_type">
+                    <nb-option value="Plot">Plot</nb-option>
+                    <nb-option value="House">House</nb-option>
                   </nb-select>
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.etype=='Home Loan'">
                   <label>Purchase Type</label>
-                  <nb-select selected="1" name="purchase_type" required [(ngModel)]="lead.purchase_type">
-                    <nb-option value="1">Plot</nb-option>
-                    <nb-option value="2">Flat</nb-option>
-                    <nb-option value="2">Plot + Construction</nb-option>
-                    <nb-option value="2">Built on Land I own</nb-option>
-                    <nb-option value="2">Individual House</nb-option>
+                  <nb-select  name="purchase_type" required [(ngModel)]="lead.meta.purchase_type">
+                    <nb-option value="Plot">Plot</nb-option>
+                    <nb-option value="Flat">Flat</nb-option>
+                    <nb-option value="Plot Construction">Plot + Construction</nb-option>
+                    <nb-option value="Built on Land I own">Built on Land I own</nb-option>
+                    <nb-option value="Individual House">Individual House</nb-option>
                   </nb-select>
                 </div>
-                <div class="col-sm-4 pad10">
-                  <label>Approval Status</label>
-                  <nb-select selected="1" name="approval_status" required [(ngModel)]="lead.approval_status">
-                    <nb-option value="1">Plot</nb-option>
-                    <nb-option value="2">House</nb-option>
-                  </nb-select>
-                </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.etype=='Home Loan' && lead.meta.purchase_type=='Individual House'">
                   <label>House Type</label>
-                  <nb-select selected="1" name="house_type" required [(ngModel)]="lead.house_type">
+                  <nb-select selected="1" name="house_type" required [(ngModel)]="lead.meta.house_type">
                     <nb-option value="1">New</nb-option>
                     <nb-option value="2">Resale</nb-option>
                   </nb-select>
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.meta.mortage_type!='House'">
+                  <label>Approval Status</label>
+                  <nb-select selected="1" name="approval_status" required [(ngModel)]="lead.meta.approval_status">
+                    <nb-option value="Plot">CMDA Approved</nb-option>
+                    <nb-option value="House">DTCP Approved</nb-option>
+                    <nb-option value="House">Patta available</nb-option>
+                    <nb-option value="House">Unapproved</nb-option>
+                  </nb-select>
+                </div>
+                
+                <div class="col-sm-4 pad10" *ngIf="lead.meta.mortage_type=='House'">
                   <label>Do you have building plan approval</label>
-                  <nb-radio-group name="build_approval" required [(ngModel)]="lead.build_approval">
+                  <nb-radio-group name="build_approval" required [(ngModel)]="lead.metabuild_approval">
                     <nb-radio [value]="'Yes'">
                       Yes
                     </nb-radio>
@@ -344,45 +379,56 @@
                     </nb-radio>
                   </nb-radio-group>
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.meta.purchase_type!='Flat' &&  lead.meta.purchase_type!='Individual House'">
                   <label>Land Size</label>
-                  <input type="text" name="land_size" required [(ngModel)]="lead.land_size" nbInput fullWidth
+                  <input type="text" name="land_size" required [(ngModel)]="lead.meta.land_size" nbInput fullWidth
                     shape="rectangle" placeholder="Land size in Sq.ft">
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.meta.mortage_type!='Plot' && lead.meta.purchase_type!='Flat' &&  lead.meta.purchase_type!='Individual House' && lead.meta.purchase_type!='Plot'">
                   <label>Construction Size</label>
-                  <input type="text" name="cons_size" required [(ngModel)]="lead.cons_size" nbInput fullWidth
+                  <input type="text" name="cons_size" required [(ngModel)]="lead.meta.cons_size" nbInput fullWidth
                     shape="rectangle" placeholder="Land size in Sq.ft">
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.etype=='Home Loan' && lead.meta.mortage_type!='Plot' &&  lead.meta.purchase_type!='Individual House' && lead.meta.purchase_type!='Flat' && lead.meta.purchase_type!='Plot'">
                   <label>Construction Cost Estimation</label>
-                  <input type="text" name="cons_estimate" required [(ngModel)]="lead.cons_estimate" nbInput fullWidth
+                  <input type="text" name="cons_estimate" required [(ngModel)]="lead.meta.cons_estimate" nbInput fullWidth
                     shape="rectangle" placeholder="Land size in Sq.ft">
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf=" lead.etype=='Home Loan' &&  lead.meta.purchase_type!='Individual House' && lead.meta.mortage_type!='Plot' && lead.meta.purchase_type!='Plot' && lead.meta.purchase_type!='Plot Construction' && lead.meta.purchase_type!='Built on Land I own'">
                   <label>Built up area </label>
-                  <input type="text" name="build_area" required [(ngModel)]="lead.build_area" nbInput fullWidth
+                  <input type="text" name="build_area" required [(ngModel)]="lead.meta.build_area" nbInput fullWidth
                     shape="rectangle" placeholder="Land size in Sq.ft">
                 </div>
                 <div class="col-sm-4 pad10">
                   <label>Property Location</label>
-                  <input type="text" name="property_location" required [(ngModel)]="lead.property_location" nbInput
+                  <input type="text" name="property_location" required [(ngModel)]="lead.meta.property_location" nbInput
                     fullWidth shape="rectangle" placeholder="Land size in Sq.ft">
 
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf=" lead.meta.purchase_type!='Plot' &&  lead.meta.purchase_type!='Individual House' && lead.meta.purchase_type!='Flat' && lead.meta.purchase_type!='Built on Land I own'">
                   <label>Current Market Value</label>
-                  <input type="text" name="market_value" required [(ngModel)]="lead.market_value" nbInput fullWidth
+                  <input type="text" name="market_value" required [(ngModel)]="lead.meta.market_value" nbInput fullWidth
                     shape="rectangle" placeholder="Land size in Sq.ft">
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.etype=='Home Loan'&& lead.meta.purchase_type!='Built on Land I own' ">
                   <label>Purchase Rate</label>
-                  <input type="text" name="purchase_rate" required [(ngModel)]="lead.purchase_rate" nbInput fullWidth
+                  <input type="text" name="purchase_rate" required [(ngModel)]="lead.meta.purchase_rate" nbInput fullWidth
                     shape="rectangle" placeholder="Land size in Sq.ft">
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10" *ngIf="lead.etype=='Home Loan'&&  lead.meta.purchase_type!='Individual House' && lead.meta.purchase_type!='Plot' && lead.meta.purchase_type!='Flat' && lead.meta.purchase_type!='Individual House' ">
+                  <label>Will you get Building Plan approval</label>
+                  <nb-radio-group name="bla" required [(ngModel)]="lead.meta.bla">
+                    <nb-radio [value]="'Yes'">
+                      Yes
+                    </nb-radio>
+                    <nb-radio [value]="'No'">
+                      No
+                    </nb-radio>
+                  </nb-radio-group>
+                </div>
+                <div class="col-sm-4 pad10" *ngIf="lead.etype=='Home Loan' && lead.meta.purchase_type!='Built on Land I own'">
                   <label>Have you Made advance payment</label>
-                  <nb-radio-group name="advance_pay" required [(ngModel)]="lead.advance_pay">
+                  <nb-radio-group name="advance_pay" required [(ngModel)]="lead.meta.advance_pay">
                     <nb-radio [value]="'Yes'">
                       Yes
                     </nb-radio>
@@ -395,14 +441,14 @@
               </div>
             </form>
           </nb-card-body>
-          <nb-card-footer>
+          <!-- <nb-card-footer>
             <button (click)="addLead(propertyForm.form)" type="submit" nbButton [status]="statuses[0]">
               Next
             </button>
-          </nb-card-footer>
+          </nb-card-footer> -->
         </nb-card>
-        <button nbButton nbStepperPrevious>prev</button>
-        <button nbButton nbStepperNext>next</button>
+        <button nbButton [status]="statuses[2]" nbStepperPrevious>prev</button>
+        <button nbButton [status]="statuses[0]" nbStepperNext>next</button>
       </nb-step>
 
       <nb-step [label]="labelFive">
@@ -414,49 +460,49 @@
               <div class="row">
                 <div class="col-sm-4 pad10">
                   <label>Aadhar Card</label>
-                  <input type="file" name="aadhar" required [(ngModel)]="lead.aadhar" nbInput fullWidth
+                  <input type="file" name="aadhar" required [(ngModel)]="lead.meta.aadhar" nbInput fullWidth
                     placeholder="Full Name">
                 </div>
                 <div class="col-sm-4 pad10">
                   <label>PAN Card</label>
-                  <input type="file" name="pancard" required [(ngModel)]="lead.pancard" nbInput fullWidth
+                  <input type="file" name="pancard" required [(ngModel)]="lead.meta.pancard" nbInput fullWidth
                     placeholder="Full Name">
                 </div>
                 <div class="col-sm-4 pad10">
                   <label>Address Proof</label>
-                  <input type="file" name="address_proof" required [(ngModel)]="lead.address_proof" nbInput fullWidth
+                  <input type="file" name="address_proof" required [(ngModel)]="lead.meta.address_proof" nbInput fullWidth
                     placeholder="Full Name"></div>
                 <div class="col-sm-4 pad10">
                   <label>Income Proof</label>
-                  <input type="file" name="income_proof" required [(ngModel)]="lead.income_proof" nbInput fullWidth
+                  <input type="file" name="income_proof" required [(ngModel)]="lead.meta.income_proof" nbInput fullWidth
                     placeholder="Full Name">
                 </div>
                 <div class="col-sm-4 pad10">
                   <label>ID Card</label>
-                  <input type="file" name="id_proof" required [(ngModel)]="lead.id_proof" nbInput fullWidth
+                  <input type="file" name="id_proof" required [(ngModel)]="lead.meta.id_proof" nbInput fullWidth
                     placeholder="Full Name">
                 </div>
                 <div class="col-sm-4 pad10">
                   <label>Bank Statement</label>
-                  <input type="file" name="bank_statement" required [(ngModel)]="lead.bank_statement" nbInput fullWidth
+                  <input type="file" name="bank_statement" required [(ngModel)]="lead.meta.bank_statement" nbInput fullWidth
                     placeholder="Full Name">
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10"  *ngIf="lead.etype=='Credit Card' && lead.cc== 'Yes'">
                   <label>Credit Card Statement</label>
-                  <input type="file" name="cc_statement_att" required [(ngModel)]="lead.cc_statement_att" nbInput
+                  <input type="file" name="cc_statement_att" required [(ngModel)]="lead.meta.cc_statement_att" nbInput
                     fullWidth placeholder="Full Name">
                 </div>
               </div>
             </form>
           </nb-card-body>
-          <nb-card-footer>
+          <!-- <nb-card-footer>
             <button (click)="addLead(kycForm.form)" type="submit" nbButton [status]="statuses[0]">
               Next
             </button>
-          </nb-card-footer>
+          </nb-card-footer> -->
         </nb-card>
-        <button nbButton nbStepperPrevious>prev</button>
-        <button nbButton nbStepperNext>next</button>
+        <button nbButton [status]="statuses[2]" nbStepperPrevious>prev</button>
+        <button nbButton [status]="statuses[0]" nbStepperNext>next</button>
       </nb-step>
       <nb-step [label]="labelSix">
         <ng-template #labelSix>Offer Updated</ng-template>
@@ -467,28 +513,28 @@
               <div class="row">
                 <div class="col-sm-4 pad10">
                   <label>Bank Name</label>
-                  <nb-select selected="1" name="offer_bank" required [(ngModel)]="lead.offer_bank">
+                  <nb-select selected="1" name="offer_bank" required [(ngModel)]="lead.meta.offer_bank">
                     <nb-option value="1">Option 1</nb-option>
                     <nb-option value="2">Option 2</nb-option>
                   </nb-select>
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10"  *ngIf="lead.etype=='Credit Card'">
                   <label>Card Name</label>
-                  <nb-select selected="1" name="offer_cc" required [(ngModel)]="lead.offer_cc">
+                  <nb-select selected="1" name="offer_cc" required [(ngModel)]="lead.meta.offer_cc">
                     <nb-option value="1">Option 1</nb-option>
                     <nb-option value="2">Option 2</nb-option>
                   </nb-select>
                 </div>
-                <div class="col-sm-4 pad10">
+                <div class="col-sm-4 pad10"  *ngIf="lead.etype!='Credit Card'">
                   <label>Loan Amount Applied for</label>
-                  <input type="text" name="laa" required [(ngModel)]="lead.laa" nbInput fullWidth
+                  <input type="text" name="laa" required [(ngModel)]="lead.meta.laa" nbInput fullWidth
                     placeholder="Full Name">
                 </div>
 
 
                 <div class="col-sm-4 pad10">
                   <label>Application Submitted to Bank</label>
-                  <nb-radio-group name="app_sub_bank" required [(ngModel)]="lead.app_sub_bank">
+                  <nb-radio-group name="app_sub_bank" required [(ngModel)]="lead.meta.app_sub_bank">
                     <nb-radio [value]="'Yes'">
                       Yes
                     </nb-radio>
@@ -502,12 +548,12 @@
                 <div class="col-sm-4 pad10">
                   <label>Credit Score</label>
 
-                  <input type="text" name="credit_score" required [(ngModel)]="lead.credit_score" nbInput fullWidth
-                    shape="rectangle" placeholder="Rectangle border">
+                  <input type="text" name="credit_score" required [(ngModel)]="lead.meta.credit_score" nbInput fullWidth
+                    shape="rectangle" placeholder="Credit Score">
                 </div>
                 <div class="col-sm-4 pad10">
                   <label>AIP Pass</label>
-                  <nb-radio-group name="aip_pass" required [(ngModel)]="lead.aip_pass">
+                  <nb-radio-group name="aip_pass" required [(ngModel)]="lead.meta.aip_pass">
                     <nb-radio [value]="'Yes'">
                       Yes
                     </nb-radio>
@@ -519,14 +565,14 @@
               </div>
             </form>
           </nb-card-body>
-          <nb-card-footer>
+          <!-- <nb-card-footer>
             <button (click)="addLead(offerForm.form)" type="submit" nbButton [status]="statuses[0]">
               Next
             </button>
-          </nb-card-footer>
+          </nb-card-footer> -->
         </nb-card>
-        <button nbButton nbStepperPrevious>prev</button>
-        <button nbButton disabled nbStepperNext>next</button>
+        <button nbButton [status]="statuses[2]" nbStepperPrevious>prev</button>
+        <button nbButton [status]="statuses[0]" disabled nbStepperNext>next</button>
       </nb-step>
     </nb-stepper>
   </nb-card-body>

@@ -35,3 +35,13 @@
 .ng-invalid.ng-touched{
   border-color: red !important;
 }
+.nb-theme-default nb-layout-header.fixed ~ .layout-container {
+  padding-top: 2.75rem!important;
+}
+.nb-theme-default nb-layout-header nav {
+  height: 2.75rem!important;
+  
+}
+.nb-theme-default nb-layout .layout .layout-container nb-sidebar.fixed, .nb-theme-default nb-layout .layout .layout-container nb-sidebar .main-container-fixed {
+  top: 1.75rem;
+}

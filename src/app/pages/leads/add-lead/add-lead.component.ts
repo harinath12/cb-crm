@@ -12,7 +12,7 @@ export class AddLeadComponent implements OnInit {
   shapes: NbComponentShape[] = [ 'rectangle', 'semi-round', 'round' ];
   sizes: NbComponentSize[] = [ 'tiny', 'small', 'medium', 'large', 'giant' ];
 
-  lead: any = {};
+  lead: any = {meta: {}};
   eligibilityForm: any = {};
   verificationForm: any = {};
   propertyForm: any = {};
